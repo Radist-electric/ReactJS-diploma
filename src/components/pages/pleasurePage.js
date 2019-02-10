@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container, Row} from 'reactstrap';
 import Header from '../header';
+import GoodsList from '../goodsList';
 
 import BeansLogoDark from '../../logo/Beans_logo_dark.svg';
 import CoffeeCup from '../../img/coffee_cup.jpg';
@@ -35,6 +36,8 @@ const PleasurePage = () => {
                             </div>
                         </div>
                     </Row>
+                    <div className="line"></div>
+                    <GoodsList/>
                 </Container>
             </section>
         </>
