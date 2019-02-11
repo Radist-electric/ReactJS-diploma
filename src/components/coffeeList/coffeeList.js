@@ -23,7 +23,11 @@ export default class CoffeeList extends Component {
     onCoffeeLoaded = (posts) => {
         let newPosts = posts.map((post, index) => {
             return (
-                <div key={index} className="shop__item">
+                <div
+                key={index}
+                className="shop__item"
+                onClick={() => this.props.onCoffeeSelected(index)}
+                >
                     <img src={post.url} alt="coffee"></img>
                     <div className="shop__item-title">
                         {post.name}
