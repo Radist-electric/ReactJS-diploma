@@ -32,7 +32,7 @@ export default class CoffeeItem extends Component {
                                 {newPost.country}
                             </div>
                             <div className="shop__point">
-                                <span>Description:</span>
+                                <span>Description: </span>
                                 {newPost.description}
                             </div>
                             <div className="shop__point">

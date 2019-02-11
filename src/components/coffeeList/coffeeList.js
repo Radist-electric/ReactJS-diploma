@@ -26,7 +26,7 @@ export default class CoffeeList extends Component {
                 <div
                 key={index}
                 className="shop__item"
-                onClick={() => this.props.onCoffeeSelected(index)}
+                onClick={() => this.props.onCoffeeSelected(index + 1)}
                 >
                     <img src={post.url} alt="coffee"></img>
                     <div className="shop__item-title">

@@ -38,8 +38,9 @@ class CoffeePage extends Component {
                 <SearchPanel/>
                 <CoffeeList
                     onCoffeeSelected={(itemId) => {
-                        console.log(itemId);
-                        this.props.history.push(itemId)
+                        this.props.history.push({
+                            pathname: itemId
+                        })
                     }}/>
             </Container>
         </section>

@@ -18,11 +18,8 @@ export default class App extends Component {
                     <Route path='/coffee' exact component={CoffeePage}/>
                     <Route path='/pleasure' exact component={PleasurePage}/>
                     <Route path='/coffee/:id' render={
-                                ({match, location, history}) => {
+                                ({match}) => {
                                     const {id} = match.params;
-                                    console.log(match);
-                                    console.log(location);
-                                    console.log(history);
                                     return <CoffeeItem coffeeId={id}/>}
                                 }/>
                     <Footer/>
