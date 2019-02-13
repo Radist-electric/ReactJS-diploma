@@ -1,24 +1,26 @@
 import React, {Component} from 'react';
 import {Container, Row} from 'reactstrap';
 import CoffeeService from '../../services/coffeeService';
+import Spinner from '../spinner';
 
 import BeansLogoDark from '../../logo/Beans_logo_dark.svg';
 
 export default class CoffeeItem extends Component {
     coffeeService = new CoffeeService();
     state = {
-        post: []
+        post: [],
+        loading: false
     }
     componentDidMount() {
+        this.setState({loading: true});
         this.coffeeService.getAllCoffee()
         .then(this.onCoffeeLoaded);
     }
     onCoffeeLoaded = (posts) => {
-        let checkId = this.props.coffeeId,
-            newPost = {};
+        let checkId = this.props.coffeeId;
         for ( let i = 1; i <= posts.length; i++) {
             if ( String(i) === checkId) {
-                newPost = posts[checkId - 1];
+                let newPost = posts[checkId - 1];
                 this.setState({post: 
                     <Row>
                         <div className="col-lg-5 offset-1">
@@ -44,28 +46,41 @@ export default class CoffeeItem extends Component {
                 });
                 break;
             } else {
-                this.setState({post: 
-                    <Row>
-                        <div className="col-lg-12">
-                            <p>There's no such an item.</p>
-                        </div>
-                    </Row>
+                this.setState({post:
+                    <Container>
+                        <Row>
+                            <div className="col-lg-12">
+                                <p className="no-item">There's no such an item.</p>
+                            </div>
+                        </Row>
+                    </Container>
                 });
             }
         }
-
-
+        setTimeout(() => {
+            this.setState({loading: false});
+        }, 500)
     }
 
     render() {
-        return (
-            <section className="shop">
+        if (this.state.loading === true) {
+            return (
                 <Container>
                     <Row>
-                        {this.state.post}
+                        <Spinner/>
                     </Row>
                 </Container>
-            </section>
-        )
+            )
+        } else {
+            return (
+                <section className="shop">
+                    <Container>
+                        <Row>
+                            {this.state.post}
+                        </Row>
+                    </Container>
+                </section>
+            )
+        }
     }
 }

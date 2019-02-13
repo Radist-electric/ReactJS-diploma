@@ -71,7 +71,6 @@ export default class CoffeeBlock extends Component {
             });
             const {posts, term, filter} = this.state;
             const visiblePosts = this.filterPost(this.searchPosts(posts, term), filter);
-    
 
         return (
             <>
@@ -94,11 +93,6 @@ export default class CoffeeBlock extends Component {
                                 Or filter
                             </div>
                             <div className="shop__filter-group">
-                                {/* <button
-                                    onClick={() => this.onFilterSelect('Brazil')}
-                                    className="shop__filter-btn">Brazil</button>
-                                <button className="shop__filter-btn">Kenya</button>
-                                <button className="shop__filter-btn">Columbia</button> */}
                                 {buttons}
                             </div>
                         </div>
