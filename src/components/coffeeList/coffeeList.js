@@ -1,27 +1,16 @@
 import React, {Component} from 'react';
 import {Row} from 'reactstrap';
-import CoffeeService from '../../services/coffeeService';
 
 export default class CoffeeList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: [],
-            loading: true,
-            error: false,
-            fatalError: false,
-            typeError: ''
+            posts: []
         };
     }
-    coffeeService = new CoffeeService();
 
-    componentDidMount() {
-        this.coffeeService.getAllCoffee()
-            .then(this.onCoffeeLoaded);
-    }
-
-    onCoffeeLoaded = (posts) => {
-        let newPosts = posts.map((post, index) => {
+    render() {
+            let newPosts = this.props.posts.map((post, index) => {
             return (
                 <div
                 key={index}
@@ -37,19 +26,14 @@ export default class CoffeeList extends Component {
                 </div>
             )
         });
-        this.setState({posts: newPosts});
-    }
-
-    render() {
         return (
             <Row>
                 <div className="col-lg-10 offset-lg-1">
                     <div className="shop__wrapper">
-                        {this.state.posts}
+                        {newPosts}
                     </div>
                 </div>                        
             </Row>
-        );
+        )
     }
 }
-

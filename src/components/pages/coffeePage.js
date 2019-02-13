@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Container, Row} from 'reactstrap';
-import CoffeeList from '../coffeeList';
-import SearchPanel from '../searchPanel';
+import CoffeeBlock from '../coffeeBlock';
 import {withRouter} from 'react-router-dom';
 
 import BeansLogoDark from '../../logo/Beans_logo_dark.svg';
@@ -35,8 +34,7 @@ class CoffeePage extends Component {
                     </div>
                 </Row>
                 <div className="line"></div>
-                <SearchPanel/>
-                <CoffeeList
+                <CoffeeBlock
                     onCoffeeSelected={(itemId) => {
                         this.props.history.push({
                             pathname: itemId
