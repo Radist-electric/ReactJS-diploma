@@ -35,9 +35,9 @@ class CoffeePage extends Component {
                 </Row>
                 <div className="line"></div>
                 <CoffeeBlock
-                    onCoffeeSelected={(itemId) => {
+                    onCoffeeSelected={(name) => {
                         this.props.history.push({
-                            pathname: itemId
+                            pathname: name.replace(/ /g, "-")
                         })
                     }}/>
             </Container>

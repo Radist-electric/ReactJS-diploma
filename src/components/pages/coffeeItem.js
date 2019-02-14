@@ -17,10 +17,10 @@ export default class CoffeeItem extends Component {
         .then(this.onCoffeeLoaded);
     }
     onCoffeeLoaded = (posts) => {
-        let checkId = this.props.coffeeId;
-        for ( let i = 1; i <= posts.length; i++) {
-            if ( String(i) === checkId) {
-                let newPost = posts[checkId - 1];
+        let checkName = this.props.coffeeName;
+        for ( let i = 0; i < posts.length; i++) {
+            if ( checkName === posts[i].name.replace(/ /g, "-")) {
+                let newPost = posts[i];
                 this.setState({post: 
                     <Row>
                         <div className="col-lg-5 offset-1">

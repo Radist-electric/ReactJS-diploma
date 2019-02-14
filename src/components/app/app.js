@@ -20,7 +20,7 @@ export default class App extends Component {
                     <Route path='/coffee/:id' render={
                                 ({match}) => {
                                     const {id} = match.params;
-                                    return <CoffeeItem coffeeId={id}/>}
+                                    return <CoffeeItem coffeeName={id}/>}
                                 }/>
                     <Footer/>
                 </>

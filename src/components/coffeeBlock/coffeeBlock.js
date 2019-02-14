@@ -99,8 +99,8 @@ export default class CoffeeBlock extends Component {
                     </div>
                 </Row>
                 <CoffeeList
-                    onCoffeeSelected={(number) => 
-                        this.props.onCoffeeSelected(number)}
+                    onCoffeeSelected={(name) => 
+                        this.props.onCoffeeSelected(name)}
                     posts={visiblePosts}/>
             </>
         );
