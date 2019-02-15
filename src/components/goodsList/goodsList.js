@@ -19,7 +19,8 @@ export default class GoodsList extends Component {
     componentDidCatch() {
         console.log('fatal');
         this.setState({
-            fatalError: true
+            fatalError: true,
+            typeError: 'fatal'
         })
     }
     componentDidMount() {

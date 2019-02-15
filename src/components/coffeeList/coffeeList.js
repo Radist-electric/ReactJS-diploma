@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import {Row} from 'reactstrap';
 import Spinner from '../spinner';
+import ErrorMessage from '../errorMessage';
 
 export default class CoffeeList extends Component {
     state = {
         posts: [],
         loading: false,
+        typeError: '',
         fatalError: false
     }
     componentDidCatch() {
         this.setState({
-            fatalError: true
+            fatalError: true,
+            typeError: 'fatal'
         })
     }
     componentDidUpdate(prevProps) {
@@ -43,6 +46,10 @@ export default class CoffeeList extends Component {
      }
 
     render() {
+        const { typeError } = this.state;
+        if(this.state.fatalError) {
+            return <Row><ErrorMessage typeError={typeError}/></Row>
+        }
         if (this.state.loading === true) {
             return (
                     <Row>

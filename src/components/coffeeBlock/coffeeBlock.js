@@ -21,7 +21,8 @@ export default class CoffeeBlock extends Component {
     coffeeService = new CoffeeService();
     componentDidCatch() {
         this.setState({
-            fatalError: true
+            fatalError: true,
+            typeError: 'fatal'
         })
     }
     componentDidMount() {

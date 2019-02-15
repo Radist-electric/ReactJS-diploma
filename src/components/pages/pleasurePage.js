@@ -9,18 +9,21 @@ import CoffeeCup from '../../img/coffee_cup.jpg';
 
 export default class PleasurePage extends Component {
     state = {
-        fatalError: false
+        fatalError: false,
+        typeError: ''
     }
     componentDidCatch() {
         console.log('fatal');
         this.setState({
-            fatalError: true
+            fatalError: true,
+            typeError: 'fatal'
         })
     }
     
     render() {
+        const { typeError } = this.state;
         if(this.state.fatalError) {
-            return <ErrorMessage typeError="fatal"/>
+            return <Row><ErrorMessage typeError={typeError}/></Row>
         }
         return (
             <>

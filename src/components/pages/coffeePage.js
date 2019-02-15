@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Container, Row} from 'reactstrap';
 import CoffeeBlock from '../coffeeBlock';
 import {withRouter} from 'react-router-dom';
+import ErrorMessage from '../errorMessage';
 
 import BeansLogoDark from '../../logo/Beans_logo_dark.svg';
 import CoffeeGirl from '../../img/coffee_girl.jpg';
@@ -16,6 +17,10 @@ class CoffeePage extends Component {
         })
     }
     render() {
+        const { typeError } = this.state;
+        if(this.state.fatalError) {
+            return <Row><ErrorMessage typeError={typeError}/></Row>
+        }
         return (
             <section className="shop">
                 <Container>

@@ -15,7 +15,8 @@ export default class CoffeeItem extends Component {
     }
     componentDidCatch() {
         this.setState({
-            fatalError: true
+            fatalError: true,
+            typeError: 'fatal'
         })
     }
     componentDidMount() {
@@ -37,7 +38,7 @@ export default class CoffeeItem extends Component {
         for ( let i = 0; i < posts.length; i++) {
             if ( checkName === posts[i].name.replace(/ /g, "-")) {
                 let newPost = posts[i],
-                    {url, name, country = "China", description = "Unfortunatelly, there's no description for this item"} = posts[i];
+                    {url, name, country = "China", description = "Unfortunately there's no description for this item"} = posts[i];
                 this.setState({post: 
                     <Row>
                         <div className="col-lg-5 offset-1">

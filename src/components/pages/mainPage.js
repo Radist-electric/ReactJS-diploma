@@ -11,17 +11,20 @@ import BeansLogoDark from '../../logo/Beans_logo_dark.svg';
 
 class MainPage extends Component {
     state = {
-        fatalError: false
+        fatalError: false,
+        typeError: ''
     }
     componentDidCatch() {
         this.setState({
-            fatalError: true
+            fatalError: true,
+            typeError: 'fatal'
         })
     }
 
     render() {
+        const { typeError } = this.state;
         if(this.state.fatalError) {
-            return <ErrorMessage typeError="fatal"/>
+            return <Row><ErrorMessage typeError={typeError}/></Row>
         }
         return (
             <>
