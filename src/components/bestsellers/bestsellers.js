@@ -27,7 +27,8 @@ export default class Bestsellers extends Component {
             return (
                 <div
                     key={index}
-                    className="best__item">
+                    className="best__item"
+                    onClick={() => this.props.onCoffeeSelected(post.name)}>
                     <img src={post.url} alt="coffee"></img>
                     <div className="best__item-title">
                         {post.name}
