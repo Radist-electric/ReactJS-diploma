@@ -1,19 +1,36 @@
 import React, {Component} from 'react';
 import {Container, Row} from 'reactstrap';
 import Spinner from '../spinner';
+import ErrorMessage from '../errorMessage';
 
 import BeansLogoDark from '../../logo/Beans_logo_dark.svg';
 
 export default class CoffeeItem extends Component {
     state = {
         post: [],
-        loading: false
+        loading: false,
+        error: false,
+        typeError: '',
+        fatalError: false
+    }
+    componentDidCatch() {
+        this.setState({
+            fatalError: true
+        })
     }
     componentDidMount() {
         this.setState({loading: true});
         const {getData} = this.props;
         getData()
-        .then(this.onCoffeeLoaded);
+        .then(this.onCoffeeLoaded)
+        .catch(this.onError);
+    }
+    onError = (err) => {
+        this.setState({
+            error: true,
+            loading: false,
+            typeError: err.message
+        });
     }
     onCoffeeLoaded = (posts) => {
         let checkName = this.props.coffeeName;
@@ -63,24 +80,46 @@ export default class CoffeeItem extends Component {
     }
 
     render() {
-        if (this.state.loading === true) {
-            return (
+        const { post, loading, error, typeError } = this.state;
+        if(this.state.fatalError) {
+            return <Container><Row><ErrorMessage typeError={typeError}/></Row></Container>
+        }
+        const content = !(loading || error) ? <>{post}</> : null;
+        const spinner = loading ? <Spinner/> : null;
+        const errorMessage = error ? <ErrorMessage typeError={typeError}/> : null;
+        return (
+            <section className="shop">
                 <Container>
                     <Row>
-                        <Spinner/>
+                        {content}
+                        {spinner}
+                        {errorMessage}
                     </Row>
                 </Container>
-            )
-        } else {
-            return (
-                <section className="shop">
-                    <Container>
-                        <Row>
-                            {this.state.post}
-                        </Row>
-                    </Container>
-                </section>
-            )
-        }
+            </section>
+        )
+
+
+
+
+        // if (this.state.loading === true) {
+        //     return (
+        //         <Container>
+        //             <Row>
+        //                 <Spinner/>
+        //             </Row>
+        //         </Container>
+        //     )
+        // } else {
+        //     return (
+        //         <section className="shop">
+        //             <Container>
+        //                 <Row>
+        //                     {this.state.post}
+        //                 </Row>
+        //             </Container>
+        //         </section>
+        //     )
+        // }
     }
 }

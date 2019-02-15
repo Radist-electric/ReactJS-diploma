@@ -4,12 +4,25 @@ import Header from '../header';
 import Bestsellers from '../bestsellers';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
+import ErrorMessage from '../errorMessage';
 
 import BeansLogo from '../../logo/Beans_logo.svg';
 import BeansLogoDark from '../../logo/Beans_logo_dark.svg';
 
 class MainPage extends Component {
+    state = {
+        fatalError: false
+    }
+    componentDidCatch() {
+        this.setState({
+            fatalError: true
+        })
+    }
+
     render() {
+        if(this.state.fatalError) {
+            return <ErrorMessage typeError="fatal"/>
+        }
         return (
             <>
                 <div className="preview">

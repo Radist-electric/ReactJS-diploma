@@ -5,7 +5,13 @@ import Spinner from '../spinner';
 export default class CoffeeList extends Component {
     state = {
         posts: [],
-        loading: false
+        loading: false,
+        fatalError: false
+    }
+    componentDidCatch() {
+        this.setState({
+            fatalError: true
+        })
     }
     componentDidUpdate(prevProps) {
         if(this.props.posts !== prevProps.posts) {
