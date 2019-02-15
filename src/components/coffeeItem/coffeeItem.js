@@ -8,7 +8,7 @@ import BeansLogoDark from '../../logo/Beans_logo_dark.svg';
 export default class CoffeeItem extends Component {
     state = {
         post: [],
-        loading: false,
+        loading: true,
         error: false,
         typeError: '',
         fatalError: false
@@ -99,28 +99,5 @@ export default class CoffeeItem extends Component {
                 </Container>
             </section>
         )
-
-
-
-
-        // if (this.state.loading === true) {
-        //     return (
-        //         <Container>
-        //             <Row>
-        //                 <Spinner/>
-        //             </Row>
-        //         </Container>
-        //     )
-        // } else {
-        //     return (
-        //         <section className="shop">
-        //             <Container>
-        //                 <Row>
-        //                     {this.state.post}
-        //                 </Row>
-        //             </Container>
-        //         </section>
-        //     )
-        // }
     }
 }

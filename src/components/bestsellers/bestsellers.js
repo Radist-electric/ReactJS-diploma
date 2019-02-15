@@ -9,7 +9,7 @@ export default class Bestsellers extends Component {
         super(props);
         this.state = {
             posts: [],
-            loading: false,
+            loading: true,
             error: false,
             typeError: '',
             fatalError: false

@@ -118,10 +118,6 @@ export default class CoffeeBlock extends Component {
                     </div>
                 </Row>
                 {content}
-                {/* <CoffeeList
-                    onCoffeeSelected={(name) => 
-                        this.props.onCoffeeSelected(name)}
-                    posts={visiblePosts}/> */}
             </>
         );
     }

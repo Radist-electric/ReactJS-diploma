@@ -6,7 +6,7 @@ import ErrorMessage from '../errorMessage';
 export default class CoffeeList extends Component {
     state = {
         posts: [],
-        loading: false,
+        loading: true,
         typeError: '',
         fatalError: false
     }
