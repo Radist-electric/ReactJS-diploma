@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import CoffeeBlock from '../coffeeBlock';
+import CoffeeList from '../coffeeList';
 import CoffeeService from '../../services/coffeeService';
 
 describe('Testing <CoffeeBlock/>', () => {

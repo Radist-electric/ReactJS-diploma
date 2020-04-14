@@ -44,10 +44,7 @@ export default class App extends Component {
                                         coffeeName={id}/>}
                                 }/>
                     <Route path='/bestsellers/:id' render={
-                                ({match, location, history}) => {
-                                    console.log(match);
-                                    console.log(location);
-                                    console.log(history);
+                                ({match}) => {
                                     const {id} = match.params;
                                     return <CoffeeItem
                                         getData={this.coffeeService.getAllBestsellers}
